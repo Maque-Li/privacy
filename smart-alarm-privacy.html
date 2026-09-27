@@ -1,49 +1,138 @@
-# 隐私政策
-
-**生效日期：2026年9月25日**
-
-本隐私政策适用于 [你的 App 名称]（以下简称“本应用”），由 [你的姓名/个人开发者名称]（以下简称“开发者”）开发和运营。
-
-## 1. 我们收集哪些信息
-
-**我们不收集任何个人信息。**
-
-本应用是一款纯本地运行的闹钟工具。你的所有闹钟设置、重复规则、跳过记录、偏好选项，均仅存储在你设备的本地存储中。我们无法访问、读取、上传或备份这些数据。
-
-具体而言：
-
-- **闹钟数据**：你创建的所有闹钟（时间、标签、重复规则、节假日跳过设置）均通过设备本地数据库（SwiftData）保存，不会离开你的设备。
-- **节假日数据**：本应用通过公开的 CDN 接口获取中国法定节假日和调休安排信息。该请求仅包含获取数据文件所需的网络请求，**不包含任何可识别你个人身份的标识符**。
-- **内购信息**：如果你购买 Pro 版本，交易由 Apple 的 App Store 系统处理。我们仅通过 StoreKit 框架在设备端验证购买凭证，**不会获取你的 Apple ID、支付信息或账单地址**。
-
-## 2. 我们如何使用你的信息
-
-由于我们不收集任何个人信息，因此不存在“使用”你信息的情形。
-
-## 3. 信息共享与披露
-
-**我们不会与任何第三方共享、出售或披露你的信息**，因为我们根本没有收集这些信息。
-
-本应用不包含任何第三方分析 SDK、广告 SDK 或数据追踪工具。
-
-## 4. 数据存储与安全
-
-你的闹钟数据存储在你的设备本地。如果你启用了 iCloud 同步（若适用），数据将通过 Apple 的 iCloud 服务在你的设备间同步，受 Apple 隐私政策保护。我们无法访问这些数据。
-
-## 5. 你的权利
-
-你可以随时在应用内删除任何闹钟或清空所有数据。卸载本应用将同时删除设备上存储的全部本地数据。
-
-## 6. 儿童隐私
-
-本应用不收集任何用户数据，因此不涉及儿童个人信息的收集问题。
-
-## 7. 隐私政策的更新
-
-如果未来本应用的功能调整涉及数据收集，我们将更新本隐私政策，并在应用内以显著方式通知你。
-
-## 8. 联系我们
-
-如果你对本隐私政策有任何疑问，请通过以下方式联系开发者：
-
-**邮箱**：[maque0425@163.com](mailto:maque0425@163.com)
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="知节闹钟隐私政策，说明闹钟与计时器数据的本机存储、节假日数据同步、保存期限和用户选择。">
+  <title>知节闹钟隐私政策</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --background: #f4f7fa;
+      --surface: #ffffff;
+      --text: #253244;
+      --muted: #5d6d7d;
+      --line: #dbe3eb;
+      --accent: #286a94;
+      --accent-soft: #e8f3f9;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: #111b25;
+        --surface: #1a2734;
+        --text: #e8eff5;
+        --muted: #b6c6d4;
+        --line: #344655;
+        --accent: #87c8ee;
+        --accent-soft: #203b4d;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 16px;
+      line-height: 1.85;
+      -webkit-text-size-adjust: 100%;
+    }
+    a { color: var(--accent); text-underline-offset: 0.18em; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+    .skip-link { position: absolute; left: 1rem; top: -5rem; padding: 0.45rem 0.8rem; background: var(--surface); z-index: 10; }
+    .skip-link:focus { top: 0.75rem; }
+    .page { width: min(100% - 2rem, 820px); margin: 0 auto; padding: 3rem 0 4rem; }
+    .eyebrow { margin: 0 0 0.5rem; color: var(--accent); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em; }
+    h1 { margin: 0; font-size: clamp(2rem, 5vw, 2.8rem); line-height: 1.3; letter-spacing: -0.02em; }
+    .updated { margin: 1rem 0 0; color: var(--muted); font-size: 0.9rem; }
+    .intro { max-width: 46rem; margin: 1.35rem 0 2rem; color: var(--muted); }
+    .toc { padding: 1.2rem 1.5rem; margin-bottom: 1.5rem; border: 1px solid var(--line); border-radius: 16px; background: var(--accent-soft); }
+    .toc h2 { margin: 0 0 0.6rem; font-size: 1rem; }
+    .toc ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.15rem 1.5rem; margin: 0; padding-left: 1.4rem; }
+    .toc a { text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    article { padding: 0 2rem; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; }
+    .policy-section { padding: 1.6rem 0; }
+    .policy-section + .policy-section { border-top: 1px solid var(--line); }
+    .policy-section h2 { scroll-margin-top: 1.2rem; margin: 0 0 0.85rem; font-size: 1.35rem; line-height: 1.5; }
+    .policy-section p { margin: 0.75rem 0 0; }
+    code { padding: 0.1em 0.35em; border-radius: 5px; background: var(--accent-soft); font-size: 0.9em; overflow-wrap: anywhere; }
+    @media (max-width: 600px) {
+      .page { width: min(100% - 1.5rem, 820px); padding: 2rem 0 3rem; }
+      .toc ol { grid-template-columns: 1fr; }
+      article { padding: 0 1.2rem; }
+      .policy-section { padding: 1.4rem 0; }
+      .policy-section h2 { font-size: 1.2rem; }
+    }
+    @media print {
+      :root { color-scheme: light; --background: #fff; --surface: #fff; --text: #000; --muted: #333; --line: #bbb; --accent: #000; }
+      body { font-size: 11pt; }
+      .page { width: 100%; padding: 0; }
+      .toc, .skip-link { display: none; }
+      article { padding: 0; border: 0; }
+      .policy-section { break-inside: avoid; }
+      a { color: inherit; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳转到正文</a>
+  <main id="main-content" class="page">
+    <header>
+      <p class="eyebrow">SMART ALARM · PRIVACY</p>
+      <h1>知节闹钟隐私政策</h1>
+      <p class="updated"><strong>更新及生效日期：2026 年 9 月 27 日</strong></p>
+      <p class="intro">知节闹钟（以下简称“本应用”）由知节闹钟开发者（以下简称“我们”）提供。本政策说明当前版本如何处理与闹钟、计时器及节假日功能有关的数据。如有疑问，可通过文末邮箱联系我们。</p>
+    </header>
+    <nav class="toc" aria-label="本页目录">
+      <h2>目录</h2>
+      <ol>
+          <li><a href="#section-1">1. 保存在设备上的数据</a></li>
+          <li><a href="#section-2">2. 节假日数据的联网请求</a></li>
+          <li><a href="#section-3">3. 数据共享与用途</a></li>
+          <li><a href="#section-4">4. 保存期限与删除</a></li>
+          <li><a href="#section-5">5. 你的选择与系统权限</a></li>
+          <li><a href="#section-6">6. 儿童隐私与政策更新</a></li>
+          <li><a href="#section-7">7. 联系我们</a></li>
+      </ol>
+    </nav>
+    <article aria-label="隐私政策正文">
+      <section class="policy-section" aria-labelledby="section-1">
+        <h2 id="section-1">1. 保存在设备上的数据</h2>
+        <p>本应用无需注册账号。你创建的闹钟时间、标签、重复规则、跳过日期、铃声及延后设置，计时器的名称和状态，以及应用记录到的响铃、停止和延后事件，保存在本机应用数据中，用于展示、安排提醒和生成本机趋势。你从“文件”中选择的自定义铃声会复制到本应用的本地目录；本应用不会访问你在文件选取器中未授权的其他个人文件，也不会上传这些铃声或闹钟内容到开发者服务器。</p>
+        <p>本应用使用 iOS 的 AlarmKit 安排闹钟和计时器。闹钟标签、计时器名称等内容可能显示在系统响铃界面、锁屏或灵动岛，具体展示受你的设备和系统设置控制。使用 Siri 或“快捷指令”时，本应用接收系统传入的时间、时长和可选标签以执行你的指令；语音识别由 Apple 的系统服务处理，本应用不录制或保存原始语音。</p>
+      </section>
+      <section class="policy-section" aria-labelledby="section-2">
+        <h2 id="section-2">2. 节假日数据的联网请求</h2>
+        <p>为了更新中国法定节假日和调休安排，本应用在启动、系统允许的后台刷新或你手动同步时，尝试从 jsDelivr 提供的 <code>chinese-days</code> 公开数据地址下载当前年和下一年的数据文件，并将下载结果缓存在本机。请求地址只包含所需年份，不包含你的闹钟设置、标签、铃声或历史记录。</p>
+        <p>与任何联网请求一样，提供该数据的服务及其网络服务商可能接收到完成请求所需的连接信息，例如 IP 地址、请求时间和请求的数据文件地址。相关处理遵循 <a href="https://www.jsdelivr.com/terms/privacy-policy">jsDelivr 隐私政策</a>。如果联网失败，本应用会尽量继续使用已保存在设备上的节假日数据。</p>
+        <p>设置页中的数据来源链接会在你主动点击后打开第三方网站；这些网站的数据处理方式以其各自的隐私政策为准。</p>
+      </section>
+      <section class="policy-section" aria-labelledby="section-3">
+        <h2 id="section-3">3. 数据共享与用途</h2>
+        <p>当前版本不设开发者账号或云端闹钟服务，也不接入广告或第三方统计 SDK。我们不出售闹钟内容，不使用闹钟内容进行广告追踪，也不会主动将闹钟、计时器、历史记录或导入铃声发送给开发者。上述节假日请求和你主动打开的外部链接是本应用涉及第三方网络服务的场景。Apple 提供的系统功能和设备备份由 Apple 按其政策处理。</p>
+        <p>当前版本没有应用内购买功能，也没有本应用提供的 iCloud 跨设备同步。iOS 的设备备份可能包含应用数据；是否备份及如何管理备份取决于你的设备和 Apple 账户设置。</p>
+      </section>
+      <section class="policy-section" aria-labelledby="section-4">
+        <h2 id="section-4">4. 保存期限与删除</h2>
+        <p>闹钟及其设置会保存在本机，直到你在应用内删除对应闹钟或卸载本应用。计时器记录用于管理正在运行的计时器，应用在查询系统计时器状态时会清理已结束的记录。响铃、停止和延后历史记录约保留 180 天，并在应用读取记录时清理过期内容；删除某个闹钟不会立即删除它已经产生的历史记录。下载的节假日文件和已导入的铃声也保存在本机应用目录中。</p>
+        <p>你可以在应用内删除单个闹钟。若希望移除本应用保存的全部本地数据，可以卸载本应用；如果设备备份中仍有相关数据，请通过 Apple 提供的备份管理方式处理。由于我们没有保存这些数据的开发者服务器，无法远程查看或删除你设备上的内容。</p>
+      </section>
+      <section class="policy-section" aria-labelledby="section-5">
+        <h2 id="section-5">5. 你的选择与系统权限</h2>
+        <p>你可以在 iOS 设置中允许或关闭本应用的闹钟权限。关闭后，本应用可能无法安排和触发闹钟或计时器。使用 Siri、“快捷指令”和设备备份的相关选择也可在 Apple 的系统设置中管理。</p>
+      </section>
+      <section class="policy-section" aria-labelledby="section-6">
+        <h2 id="section-6">6. 儿童隐私与政策更新</h2>
+        <p>本应用不以儿童为目标提供账号、社交或广告服务。如果将来功能或数据处理方式发生变化，我们会更新本政策的日期和内容，并按适用要求提供必要通知。</p>
+      </section>
+      <section class="policy-section" aria-labelledby="section-7">
+        <h2 id="section-7">7. 联系我们</h2>
+        <p>如对本政策或本应用的数据处理有疑问，请发送邮件至 <a href="mailto:maque0425@163.com">maque0425@163.com</a>。</p>
+      </section>
+    </article>
+  </main>
+</body>
+</html>
