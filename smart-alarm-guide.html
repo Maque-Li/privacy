@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="知节闹钟新手指引：从首次授权、创建闹钟到节假日规则、铃声、延后提醒和 Siri，帮你设置第一个闹钟。">
+  <title>知节闹钟新手指引</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --background: #e3e3e6;
+      --surface: #ffffff;
+      --text: #253244;
+      --muted: #5d6d7d;
+      --line: #dbe3eb;
+      --accent: #286a94;
+      --accent-soft: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: linear-gradient(160deg, #687075 0%, #595b6b 30%, #2f2a42 60%, #262339 90%, #252238 100%);
+        --surface: rgba(138, 131, 175, .28);
+        --text: #ffffff;
+        --muted: #e7e5f1;
+        --line: rgba(231, 229, 241, .2);
+        --accent: #ada8ff;
+        --accent-soft: rgba(138, 131, 175, .28);
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      .steps li::before { color: #252238; }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--background);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 16px;
+      line-height: 1.85;
+      -webkit-text-size-adjust: 100%;
+      overflow-wrap: anywhere;
+    }
+    a { color: var(--accent); text-underline-offset: 0.18em; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+    .skip-link { position: absolute; left: 1rem; top: -5rem; padding: 0.45rem 0.8rem; background: var(--surface); z-index: 10; }
+    .skip-link:focus { top: 0.75rem; }
+    .page { width: min(100% - 2rem, 820px); margin: 0 auto; padding: 3rem 0 4rem; }
+    .eyebrow { margin: 0 0 0.5rem; color: var(--accent); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em; }
+    h1 { margin: 0; font-size: clamp(2rem, 5vw, 2.8rem); line-height: 1.3; letter-spacing: -0.02em; }
+    .intro { max-width: 42rem; margin: 1rem 0 1.6rem; color: var(--muted); }
+    .quick-start { padding: 1.4rem 1.5rem; margin: 0 0 1.5rem; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 16px; }
+    .quick-start h2 { margin: 0 0 0.9rem; font-size: 1.15rem; }
+    .steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+    .steps li { display: grid; grid-template-columns: 1.8rem 1fr; gap: 0.75rem; align-items: start; counter-increment: step; }
+    .steps li + li { margin-top: 0.85rem; }
+    .steps li::before { content: counter(step); display: grid; place-items: center; width: 1.8rem; height: 1.8rem; margin-top: 0.15rem; border-radius: 50%; background: var(--accent); color: var(--surface); font-size: 0.85rem; font-weight: 700; line-height: 1; }
+    .steps p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .toc { margin-bottom: 1.5rem; }
+    .toc h2 { margin: 0 0 0.6rem; font-size: 1rem; color: var(--muted); }
+    .toc ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.4rem 1rem; list-style: none; margin: 0; padding: 0; }
+    .toc a { display: flex; align-items: center; min-height: 44px; padding: 0.45rem 0.8rem; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    article { padding: 0 2rem; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; }
+    .guide-section { padding: 1.6rem 0; }
+    .guide-section + .guide-section { border-top: 1px solid var(--line); }
+    .guide-section h2 { scroll-margin-top: 1.2rem; margin: 0 0 0.85rem; font-size: 1.35rem; line-height: 1.5; }
+    .guide-section p { margin: 0.75rem 0 0; }
+    .guide-section ul, .guide-section ol { margin: 0.75rem 0 0; padding-left: 1.4rem; }
+    .guide-section li + li { margin-top: 0.5rem; }
+    .note { margin-top: 1rem; padding: 0.85rem 1rem; border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; background: var(--accent-soft); font-size: 0.95rem; }
+    .note p:first-child { margin-top: 0; }
+    .rules { margin: 1rem 0 0; }
+    .rule { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding: 0.8rem 0; }
+    .rule + .rule { border-top: 1px solid var(--line); }
+    .rule dt { font-weight: 700; }
+    .rule dd { margin: 0; color: var(--muted); }
+    .example { color: var(--accent); font-weight: 700; }
+    details { border-top: 1px solid var(--line); }
+    details:first-of-type { border-top: 0; }
+    summary { padding: 0.85rem 0; min-height: 44px; font-weight: 700; cursor: pointer; }
+    summary::marker { color: var(--accent); }
+    details p { padding: 0 0 1rem; color: var(--muted); }
+    footer { padding-top: 1.25rem; color: var(--muted); font-size: 0.85rem; }
+    footer p { margin: 0; }
+    @media (max-width: 600px) {
+      .page { width: min(100% - 1.5rem, 820px); padding: 1.8rem 0 2.5rem; }
+      .quick-start { padding: 1.2rem; }
+      article { padding: 0 1.2rem; }
+      .guide-section { padding: 1.4rem 0; }
+      .guide-section h2 { font-size: 1.2rem; }
+      .rule { grid-template-columns: 1fr; gap: 0.15rem; }
+    }
+    @media (max-width: 360px) {
+      .toc ul { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳转到正文</a>
+  <main id="main-content" class="page">
+    <header>
+      <p class="eyebrow">知节闹钟 · 使用指南</p>
+      <h1>新手指引</h1>
+      <p class="intro">从第一个闹钟开始，让工作日准时响铃，让假期安心休息。按下面的步骤设置，就能用起来。</p>
+    </header>
+
+    <section class="quick-start" aria-labelledby="quick-start-title">
+      <h2 id="quick-start-title">先试一个两分钟后的闹钟</h2>
+      <ol class="steps">
+        <li><div><strong>允许闹钟提醒</strong><p>在首页开启权限，并在系统询问时选择允许。</p></div></li>
+        <li><div><strong>点「＋」创建</strong><p>选择两分钟后的时间，将「重复」设为「仅一次」，保持「启用闹钟」开启，然后点「保存」。</p></div></li>
+        <li><div><strong>确认安排，等待响铃</strong><p>返回首页查看下一次响铃时间；响铃后停止，再设置日常使用的闹钟。</p></div></li>
+      </ol>
+    </section>
+
+    <nav class="toc" aria-label="本页目录">
+      <h2>按需查看</h2>
+      <ul>
+        <li><a href="#create">1. 创建第一个闹钟</a></li>
+        <li><a href="#repeat">2. 选择重复规则</a></li>
+        <li><a href="#sound">3. 铃声与延后提醒</a></li>
+        <li><a href="#manage">4. 日常操作与查看</a></li>
+        <li><a href="#siri">5. Siri 与计时器</a></li>
+        <li><a href="#coverage">6. 让闹钟持续有效</a></li>
+        <li><a href="#faq">7. 常见问题</a></li>
+        <li><a href="#support">8. 反馈与帮助</a></li>
+      </ul>
+    </nav>
+
+    <article aria-label="新手指引正文">
+      <section class="guide-section" aria-labelledby="create">
+        <h2 id="create">1. 创建第一个闹钟</h2>
+        <ol>
+          <li><strong>开启权限。</strong>在首页点「允许闹钟提醒」。如果之前拒绝过，点「前往设置开启」，在系统设置中允许知节闹钟使用闹钟权限。</li>
+          <li><strong>添加时间。</strong>点首页的「＋」按钮，选择响铃时间。添加按钮可以拖动到顺手的位置。</li>
+          <li><strong>设置用途。</strong>标签可选填，例如「起床」或「吃药」；再选择重复规则、铃声和延后提醒。</li>
+          <li><strong>保存并确认。</strong>保持「启用闹钟」开启，点「保存」，然后在首页或闹钟菜单的「查看安排」里确认下一次响铃。</li>
+        </ol>
+        <div class="note"><p>「仅一次」会在<strong>下一次到达所选时间</strong>时响铃。如果今天的这个时间已经过去，就会安排到明天。</p></div>
+      </section>
+
+      <section class="guide-section" aria-labelledby="repeat">
+        <h2 id="repeat">2. 选择适合你的重复规则</h2>
+        <p>需要跟着中国法定节假日和调休走，选择「中国法定工作日」。只想固定在某些星期响铃，选择相应的星期规则。</p>
+        <dl class="rules">
+          <div class="rule"><dt>仅一次</dt><dd>只在下一次到达所选时间时响铃，适合临时提醒。</dd></div>
+          <div class="rule"><dt>每天</dt><dd>每天响铃，周末和节假日也会响。</dd></div>
+          <div class="rule"><dt>周一至周五</dt><dd>固定在周一到周五响铃，不随法定节假日或调休调整。</dd></div>
+          <div class="rule"><dt>自定义星期</dt><dd>勾选需要响铃的星期，至少选一天；不随节假日调整。</dd></div>
+          <div class="rule"><dt>大小周</dt><dd>首次选择时自动选中本周六，将本周设为大周；也可改选其他大周日期。大周周一至周六响，小周周一至周五响，每两周循环。不随法定节假日或调休调整，免费版可用。</dd></div>
+          <div class="rule"><dt>中国法定工作日</dt><dd>法定假期跳过，周末调休补班照常响铃；需要对应年份的节假日数据。</dd></div>
+        </dl>
+        <div class="note"><p><strong>例如：</strong>你想工作日早上 7:30 起床，假期不响、周末补班也响，就选择「中国法定工作日」并把时间设为 7:30。</p></div>
+      </section>
+
+      <section class="guide-section" aria-labelledby="sound">
+        <h2 id="sound">3. 铃声与延后提醒</h2>
+        <p><strong>选铃声：</strong>编辑闹钟时，可以使用「系统默认」或选择内置铃声。点铃声旁的播放按钮，先试听再决定。</p>
+        <p><strong>用自己的音频：</strong>点「从文件选择铃声」，导入 WAV、AIFF 或 CAF 文件。音频需短于 30 秒、文件不超过 15 MB；无法导入时，可换成支持的格式或使用内置铃声。</p>
+        <p><strong>稍后再响一次：</strong>打开「延后提醒」，设置 1 至 30 分钟。响铃时点「延后」，经过设定分钟数后再次响铃；关闭延后提醒后，该闹钟不会提供延后操作。</p>
+        <p>应用内响铃页底部的「滑动以停止」需要滑到尽头。锁屏或应用外响铃时，使用系统响铃界面上的操作。</p>
+      </section>
+
+      <section class="guide-section" aria-labelledby="manage">
+        <h2 id="manage">4. 日常操作与查看</h2>
+        <ul>
+          <li><strong>修改、启停：</strong>点闹钟的时间区域进入编辑，也可从「…」菜单选「编辑」。首页的开关可以启用或关闭闹钟。</li>
+          <li><strong>临时休息一次：</strong>在「…」菜单选「跳过下一次」。重复闹钟之后仍按原规则响铃；生效前可以从同一菜单恢复已跳过的日期。一次性闹钟跳过后会关闭，需要时重新开启。</li>
+          <li><strong>复制或删除：</strong>在「…」菜单选「复制闹钟」，调整后点「保存」才会创建；选「删除」后需要确认。</li>
+          <li><strong>查看日历：</strong>点首页右上角的日历入口，查看假期、调休补班、农历、节气和已确认的闹钟，点某一天可看详情。</li>
+          <li><strong>查看记录：</strong>点「我的闹钟」旁的「记录」，查看已记录的响铃、停止、延后和近期趋势。记录保存在本机，可能不完整，不能用来判断是否已经起床。</li>
+        </ul>
+        <div class="note"><p>当前免费版最多保存 <strong>5 个闹钟</strong>。关闭闹钟仍占一个名额；达到上限时，请先删除不需要的闹钟。复制也会占用一个名额。</p></div>
+      </section>
+
+      <section class="guide-section" aria-labelledby="siri">
+        <h2 id="siri">5. 用 Siri 设置闹钟和计时器</h2>
+        <p><strong>设置闹钟：</strong>先对 Siri 说 <span class="example">「知节设个闹钟」</span>，等它询问时间后，再回答 <span class="example">「明天早上 7 点」</span>。这会创建一个一次性闹钟。</p>
+        <p>先单独说触发语，等 Siri 追问后再说时间。把时间连在同一句里，Siri 可能转到系统「时钟」App；完成后可以打开知节闹钟确认是否已创建。</p>
+        <p><strong>开始计时：</strong>对 Siri 说 <span class="example">「用知节闹钟设置计时器」</span>，再回答分钟数。计时状态可在系统支持的锁屏或灵动岛中查看。</p>
+        <p>更多说法和快捷指令入口在「设置 → Siri 与快捷指令」。如果 Siri 没有询问时间，可从那里打开快捷指令，手动运行「设置闹钟」检查流程。</p>
+      </section>
+
+      <section class="guide-section" aria-labelledby="coverage">
+        <h2 id="coverage">6. 让闹钟持续有效</h2>
+        <p>已经安排好的闹钟由 iOS 系统负责响铃。当前版本会把重复规则展开为<strong>未来 30 天内、合计最多 48 次响铃</strong>的安排；闹钟越多，实际覆盖的天数可能越短。</p>
+        <ul>
+          <li>在闹钟的「… → 查看安排」里查看「已安排至」，并在这个日期前重新打开应用，补充后续安排。</li>
+          <li>后台刷新会尽量补充安排，但系统不保证它按时执行，需要定期打开应用确认。</li>
+          <li>跨时区旅行或更改系统时间后，打开应用重新安排，让响铃时间与当前设备时区一致。</li>
+          <li>使用「中国法定工作日」时，可到「设置 → 中国节假日 → 同步最新节假日」更新数据；缺少年份数据时，该年份不会安排法定工作日闹钟。</li>
+        </ul>
+        <div class="note"><p>48 次指的是已安排的<strong>响铃次数</strong>，与免费版可保存的 5 个<strong>闹钟</strong>是两回事。同步或安排失败时，先查看应用提示，再重试并确认下一次响铃。</p></div>
+      </section>
+
+      <section class="guide-section" aria-labelledby="faq">
+        <h2 id="faq">7. 常见问题</h2>
+        <details>
+          <summary>没有显示下一次响铃，怎么办？</summary>
+          <p>先检查闹钟开关和权限，再看是否有失败提示。到「设置 → 系统闹钟」确认权限，必要时点「打开系统设置」开启；然后点「重新检查并补充安排」。如果使用法定工作日规则，也请检查并同步节假日数据。</p>
+        </details>
+        <details>
+          <summary>为什么放假还响，或者补班没响？</summary>
+          <p>检查「重复」是否选了「中国法定工作日」。「每天」「周一至周五」和「自定义星期」都按固定星期响铃，不会随节假日和调休改变。法定工作日规则也需要已发布并成功同步的年份数据。</p>
+        </details>
+        <details>
+          <summary>为什么跳过的日期又恢复了？</summary>
+          <p>当前每个闹钟只能临时跳过下一次响铃。编辑并保存会清除这个临时跳过日期；如果仍需跳过，请保存后重新选择「跳过下一次」。</p>
+        </details>
+        <details>
+          <summary>能修改系统「时钟」App 的闹钟吗？</summary>
+          <p>知节闹钟管理的是本应用创建的闹钟，与系统「时钟」App 的闹钟互不影响。两个应用都设置了闹钟时，请分别检查。</p>
+        </details>
+        <details>
+          <summary>在哪里调整外观或查看隐私政策？</summary>
+          <p>在「设置 → 外观模式」选择跟随系统、亮色或暗色；设置页使用自己的深色配色。在「设置 → 关于知节闹钟 → 隐私政策」查看数据处理说明。闹钟无需注册账号，数据保存在本机。</p>
+        </details>
+      </section>
+      <section class="guide-section" aria-labelledby="support">
+        <h2 id="support">8. 反馈与帮助</h2>
+        <p>如果使用知节闹钟时遇到问题，或有功能建议，请发送邮件至 <a href="mailto:maque0425@163.com">maque0425@163.com</a>。</p>
+        <p>为方便定位问题，请尽量说明：</p>
+        <ul>
+          <li>应用版本、iPhone 型号和 iOS 版本。</li>
+          <li>操作步骤、预期结果，以及实际出现的情况或提示。</li>
+          <li>与问题有关的截图；闹钟问题可附上重复规则、下一次响铃时间和「查看安排」中的状态。</li>
+        </ul>
+        <p>发送前请遮盖截图中的个人信息。无需提供 Apple 账号密码、支付信息或完整健康记录。</p>
+        <p>隐私与数据处理问题也可通过上述邮箱联系我们。隐私政策可在应用的「设置」中查看。</p>
+      </section>
+    </article>
+    <footer><p>知节闹钟 · 适用于当前开发预览版 · 更新于 2026 年 10 月 4 日</p></footer>
+  </main>
+</body>
+</html>
