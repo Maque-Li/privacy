@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="知節鬧鐘新手指引：從首次授權、創建鬧鐘到節假日規則、鈴聲、延後提醒和 Siri，幫你設定第一個鬧鐘。">
+  <title>知節鬧鐘新手指引</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --background: #e3e3e6;
+      --surface: #ffffff;
+      --text: #253244;
+      --muted: #5d6d7d;
+      --line: #dbe3eb;
+      --accent: #286a94;
+      --accent-soft: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: linear-gradient(160deg, #687075 0%, #595b6b 30%, #2f2a42 60%, #262339 90%, #252238 100%);
+        --surface: rgba(138, 131, 175, .28);
+        --text: #ffffff;
+        --muted: #e7e5f1;
+        --line: rgba(231, 229, 241, .2);
+        --accent: #ada8ff;
+        --accent-soft: rgba(138, 131, 175, .28);
+      }
+    }
+    @media (prefers-color-scheme: dark) {
+      .steps li::before { color: #252238; }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--background);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      font-size: 16px;
+      line-height: 1.85;
+      -webkit-text-size-adjust: 100%;
+      overflow-wrap: anywhere;
+    }
+    a { color: var(--accent); text-underline-offset: 0.18em; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+    .skip-link { position: absolute; left: 1rem; top: -5rem; padding: 0.45rem 0.8rem; background: var(--surface); z-index: 10; }
+    .skip-link:focus { top: 0.75rem; }
+    .page { width: min(100% - 2rem, 820px); margin: 0 auto; padding: 3rem 0 4rem; }
+    .eyebrow { margin: 0 0 0.5rem; color: var(--accent); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em; }
+    h1 { margin: 0; font-size: clamp(2rem, 5vw, 2.8rem); line-height: 1.3; letter-spacing: -0.02em; }
+    .intro { max-width: 42rem; margin: 1rem 0 1.6rem; color: var(--muted); }
+    .quick-start { padding: 1.4rem 1.5rem; margin: 0 0 1.5rem; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 16px; }
+    .quick-start h2 { margin: 0 0 0.9rem; font-size: 1.15rem; }
+    .steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+    .steps li { display: grid; grid-template-columns: 1.8rem 1fr; gap: 0.75rem; align-items: start; counter-increment: step; }
+    .steps li + li { margin-top: 0.85rem; }
+    .steps li::before { content: counter(step); display: grid; place-items: center; width: 1.8rem; height: 1.8rem; margin-top: 0.15rem; border-radius: 50%; background: var(--accent); color: var(--surface); font-size: 0.85rem; font-weight: 700; line-height: 1; }
+    .steps p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .toc { margin-bottom: 1.5rem; }
+    .toc h2 { margin: 0 0 0.6rem; font-size: 1rem; color: var(--muted); }
+    .toc ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.4rem 1rem; list-style: none; margin: 0; padding: 0; }
+    .toc a { display: flex; align-items: center; min-height: 44px; padding: 0.45rem 0.8rem; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+    article { padding: 0 2rem; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; }
+    .guide-section { padding: 1.6rem 0; }
+    .guide-section + .guide-section { border-top: 1px solid var(--line); }
+    .guide-section h2 { scroll-margin-top: 1.2rem; margin: 0 0 0.85rem; font-size: 1.35rem; line-height: 1.5; }
+    .guide-section p { margin: 0.75rem 0 0; }
+    .guide-section ul, .guide-section ol { margin: 0.75rem 0 0; padding-left: 1.4rem; }
+    .guide-section li + li { margin-top: 0.5rem; }
+    .note { margin-top: 1rem; padding: 0.85rem 1rem; border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; background: var(--accent-soft); font-size: 0.95rem; }
+    .note p:first-child { margin-top: 0; }
+    .rules { margin: 1rem 0 0; }
+    .rule { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding: 0.8rem 0; }
+    .rule + .rule { border-top: 1px solid var(--line); }
+    .rule dt { font-weight: 700; }
+    .rule dd { margin: 0; color: var(--muted); }
+    .example { color: var(--accent); font-weight: 700; }
+    details { border-top: 1px solid var(--line); }
+    details:first-of-type { border-top: 0; }
+    summary { padding: 0.85rem 0; min-height: 44px; font-weight: 700; cursor: pointer; }
+    summary::marker { color: var(--accent); }
+    details p { padding: 0 0 1rem; color: var(--muted); }
+    footer { padding-top: 1.25rem; color: var(--muted); font-size: 0.85rem; }
+    footer p { margin: 0; }
+    @media (max-width: 600px) {
+      .page { width: min(100% - 1.5rem, 820px); padding: 1.8rem 0 2.5rem; }
+      .quick-start { padding: 1.2rem; }
+      article { padding: 0 1.2rem; }
+      .guide-section { padding: 1.4rem 0; }
+      .guide-section h2 { font-size: 1.2rem; }
+      .rule { grid-template-columns: 1fr; gap: 0.15rem; }
+    }
+    @media (max-width: 360px) {
+      .toc ul { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳轉到正文</a>
+  <main id="main-content" class="page">
+    <header>
+      <p class="eyebrow">知節鬧鐘 · 使用指南</p>
+      <h1>新手指引</h1>
+      <p class="intro">從第一個鬧鐘開始，讓工作日準時響鈴，讓假期安心休息。按下面的步驟設定，就能用起來。</p>
+      <p><a href="smart-alarm-guide.html" lang="zh-Hans">简体中文</a> · <a href="smart-alarm-guide-en.html" lang="en-GB">English</a></p>
+    </header>
+
+    <section class="quick-start" aria-labelledby="quick-start-title">
+      <h2 id="quick-start-title">先試一個兩分鐘後的鬧鐘</h2>
+      <ol class="steps">
+        <li><div><strong>允許鬧鐘提醒</strong><p>在首頁開啓權限，並在系統詢問時選擇允許。</p></div></li>
+        <li><div><strong>點「＋」創建</strong><p>選擇兩分鐘後的時間，將「重複」設為「僅一次」，保持「啓用鬧鐘」開啓，然後點「儲存」。</p></div></li>
+        <li><div><strong>確認安排，等待響鈴</strong><p>返回首頁查看下一次響鈴時間；響鈴後停止，再設定日常使用的鬧鐘。</p></div></li>
+      </ol>
+    </section>
+
+    <nav class="toc" aria-label="本頁目錄">
+      <h2>按需查看</h2>
+      <ul>
+        <li><a href="#create">1. 創建第一個鬧鐘</a></li>
+        <li><a href="#regions">假日地區與語言</a></li>
+        <li><a href="#repeat">2. 選擇重複規則</a></li>
+        <li><a href="#sound">3. 鈴聲與延後提醒</a></li>
+        <li><a href="#manage">4. 日常操作與查看</a></li>
+        <li><a href="#siri">5. Siri 與計時器</a></li>
+        <li><a href="#coverage">6. 讓鬧鐘持續有效</a></li>
+        <li><a href="#faq">7. 常見問題</a></li>
+        <li><a href="#support">8. 反饋與幫助</a></li>
+      </ul>
+    </nav>
+
+    <article aria-label="新手指引正文">
+      <section class="guide-section" aria-labelledby="create">
+        <h2 id="create">1. 創建第一個鬧鐘</h2>
+        <ol>
+          <li><strong>開啓權限。</strong>在首頁點「允許鬧鐘提醒」。如果之前拒絕過，點「前往設定開啓」，在系統設定中允許知節鬧鐘使用鬧鐘權限。</li>
+          <li><strong>添加時間。</strong>點首頁的「＋」按鈕，選擇響鈴時間。添加按鈕可以拖動到順手的位置。</li>
+          <li><strong>設定用途。</strong>標籤可選填，例如「起床」或「吃藥」；再選擇重複規則、鈴聲和延後提醒。</li>
+          <li><strong>儲存並確認。</strong>保持「啓用鬧鐘」開啓，點「儲存」，然後在首頁或鬧鐘菜單的「查看安排」里確認下一次響鈴。</li>
+        </ol>
+        <div class="note"><p>「僅一次」會在<strong>下一次到達所選時間</strong>時響鈴。如果今天的這個時間已經過去，就會安排到明天。</p></div>
+        <p><strong>重複鬧鐘提醒：</strong>儲存前會比較本應用內已開啓鬧鐘在未來一年及已選日期的實際規則。同一天、同一分鐘重合時，可選「返回修改」或「仍然儲存」。假日地區、休假、跳過和臨時改點都會參與判斷。</p>
+      </section>
+
+      <section class="guide-section" aria-labelledby="repeat">
+        <h2 id="repeat">2. 選擇適合你的重複規則</h2>
+        <p>需要跟著中國法定節假日和調休走，選擇「中國法定工作日」。只想固定在某些星期響鈴，選擇相應的星期規則。</p>
+        <dl class="rules">
+          <div class="rule"><dt>僅一次</dt><dd>只在下一次到達所選時間時響鈴，適合臨時提醒。</dd></div>
+          <div class="rule"><dt>每天</dt><dd>每天響鈴，週末和節假日也會響。</dd></div>
+          <div class="rule"><dt>週一至週五</dt><dd>固定在週一到週五響鈴，不隨法定節假日或調休調整。</dd></div>
+          <div class="rule"><dt>自定義星期</dt><dd>勾選需要響鈴的星期，至少選一天；不隨節假日調整。</dd></div>
+          <div class="rule"><dt>大小周</dt><dd>首次選擇時自動選中本週六，將本週設為大周；也可改選其他大周日期。大周週一至週六響，小周週一至週五響，每兩周循環。不隨法定節假日或調休調整，免費版可用。</dd></div>
+          <div class="rule"><dt>單休</dt><dd>每周固定休息一天，其餘六天響鈴。預設周日休息，可改選其他星期。按固定星期執行。</dd></div>
+          <div class="rule"><dt>排班（Pro）</dt><dd>「日曆選日」可跨月勾選響鈴日期。「循環排班」從首個上班日開始，按連續上班和連續休息的天數循環，例如上二休一。上班日按設定的UTC+8響鈴，法定節假日和調休不改變週期。可先試設和預覽，儲存新排班或修改班表需要 Pro。Pro 到期後，已有排班繼續按原規則安排響鈴。可從「查看安排」核對系統已確認的日期。</dd></div>
+          <div class="rule"><dt>中國法定工作日</dt><dd>法定假期跳過，週末調休補班照常響鈴；需要對應年份的節假日資料。</dd></div>
+        </dl>
+        <div class="note"><p><strong>例如：</strong>你想工作日早上 7:30 起床，假期不響、週末補班也響，就選擇「中國法定工作日」並把時間設為 7:30。</p></div>
+      </section>
+
+      <section class="guide-section" aria-labelledby="sound">
+        <h2 id="sound">3. 鈴聲與延後提醒</h2>
+        <p><strong>選鈴聲：</strong>編輯鬧鐘時，可以使用「系統預設」或選擇內置鈴聲。點鈴聲旁的播放按鈕，先試聽再決定。</p>
+        <p><strong>用自己的音頻：</strong>點「從檔案選擇鈴聲」，選擇 MP3、M4A、AAC、WAV、AIFF 或 CAF 音頻。原檔案最多 200 MB、最長兩小時。在裁剪頁拖動波形手柄或調整起止滑塊，選擇最長 29 秒的片段，設定淡入淡出並試聽後儲存。此功能免費，也可從「設定 → 服務與資料 → 鈴聲管理」進入。</p>
+        <p><strong>稍後再響一次：</strong>打開「延後提醒」，設定 1 至 30 分鐘。響鈴時點「延後」，經過設定分鐘數後再次響鈴；關閉延後提醒後，該鬧鐘不會提供延後操作。</p>
+        <p>應用內響鈴頁底部的「滑動以停止」需要滑到盡頭。鎖屏或應用外響鈴時，使用系統響鈴界面上的操作。</p>
+      </section>
+
+      <section class="guide-section" aria-labelledby="manage">
+        <h2 id="manage">4. 日常操作與查看</h2>
+        <ul>
+          <li><strong>修改、啓停：</strong>點鬧鐘的時間區域進入編輯，也可從「…」菜單選「編輯」。首頁的開關可以啓用或關閉鬧鐘。</li>
+          <li><strong>明日特殊安排：</strong>首頁在明天有假日跳過、補班、休假暫停、臨時跳過或改點時顯示提示；點一條可查看安排。假日判斷按每條鬧鐘儲存的中國大陸、新加坡、中國香港、中國台灣或中國澳門地區執行。缺少假日資料、權限或系統確認時，會提示檢查，不表示已經安排成功。</li>
+          <li><strong>臨時休息一次：</strong>在「…」菜單選「跳過下一次」。固定日期規則可跳過下一次；生效前可以恢復。系統長期重複暫不提供單次跳過，避免跳過後失去長期重複。一次性鬧鐘跳過後會關閉，需要時重新開啓。</li>
+          <li><strong>複製或刪除：</strong>在「…」菜單選「複製鬧鐘」，調整後點「儲存」才會創建；選「刪除」後需要確認。</li>
+          <li><strong>查看日曆：</strong>點首頁右上角的日曆入口，查看假期、調休補班、農曆、節氣和已確認的鬧鐘，點某一天可看詳情。</li>
+          <li><strong>查看記錄：</strong>點「我的鬧鐘」旁的「記錄」，查看已記錄的響鈴、停止、延後和近期趨勢。記錄儲存在本機，可能不完整，不能用來判斷是否已經起床。</li>
+        </ul>
+        <div class="note"><p>當前免費版最多儲存 <strong>5 個鬧鐘</strong>。關閉鬧鐘仍佔一個名額；達到上限時，請先刪除不需要的鬧鐘。複製也會佔用一個名額。</p></div>
+      </section>
+
+      <section class="guide-section" aria-labelledby="siri">
+        <h2 id="siri">5. 用 Siri 設定鬧鐘和計時器</h2>
+        <p><strong>設定鬧鐘：</strong>先對 Siri 說 <span class="example">「知節設個鬧鐘」</span>，等它詢問時間後，再回答 <span class="example">「明天早上 7 點」</span>。這會創建一個一次性鬧鐘。</p>
+        <p>先單獨說觸發語，等 Siri 追問後再說時間。把時間連在同一句里，Siri 可能轉到系統「時鐘」App；完成後可以打開知節鬧鐘確認是否已創建。</p>
+        <p><strong>開始計時：</strong>對 Siri 說 <span class="example">「用知節鬧鐘設定計時器」</span>，再回答分鐘數。計時狀態可在系統支援的鎖屏或靈動島中查看。</p>
+        <p><strong>粵語說法：</strong>可以說<span class="example">「用知節鬧鐘幫我校個鬧鐘」</span>，等追問後再回答<span class="example">「聽朝七點半」</span>；計時可以說<span class="example">「用知節鬧鐘幫我計時」</span>。Siri 的識別語言在 iOS 設定中選擇，與應用內語音輸入獨立。</p>
+        <p>更多說法和捷徑入口在「設定 → Siri 與捷徑」。如果 Siri 沒有詢問時間，可從那裡打開捷徑，手動運行「設定鬧鐘」檢查流程。</p>
+      </section>
+
+      <section class="guide-section" aria-labelledby="coverage">
+        <h2 id="coverage">6. 讓鬧鐘持續有效</h2>
+        <p>設備時區為無夏令時的 UTC+8（如上海、新加坡、香港、台北、澳門）且沒有待生效的日期例外時，「每天」「週一至週五」「自定義星期」「單休」由系統長期重複，無需定期補充未來日期的安排。</p>
+        <p>各地區的假日工作日規則、「大小周」「循環排班」按具體日期預排，需要補充後續安排。「日曆選日」只安排已選日期，用完後可編輯鬧鐘添加新日期。</p>
+        <ul>
+          <li>首頁會顯示最早覆蓋日期；在「查看安排」中可看每條鬧鐘實際確認的最後日期。</li>
+          <li>鎖屏停止或延後鬧鐘時會嘗試補排，打開應用時也會更新。後台刷新與系統按鈕回調不能保證在所有狀態執行。</li>
+          <li>允許通知後，應用會在覆蓋結束前 3 天、1 天及結束後提醒；覆蓋不足一天時盡快提醒。請在覆蓋結束前打開應用確認。</li>
+          <li>法定工作日需要對應年份的節假日資料；新年份資料未發佈或未同步時，不會猜測工作日。</li>
+          <li>跨時區後請打開應用核對時間。當前固定日期規則按 UTC+8 計算，系統長期重複會跟隨設備時區。</li>
+        </ul>
+        <div class="note"><p>系統長期重複每條只佔一個安排。工作日、大小周和循環排班等規則按日期預排，所有規則共用 48 個安排的應用預算。請在「查看安排」核對系統確認的日期。</p></div>
+      </section>
+
+      <section class="guide-section" aria-labelledby="faq">
+        <h2 id="faq">7. 常見問題</h2>
+        <details>
+          <summary>沒有顯示下一次響鈴，怎麼辦？</summary>
+          <p>先檢查鬧鐘開關和權限，再看是否有失敗提示。到「設定 → 系統鬧鐘」確認權限，必要時點「打開系統設定」開啓；然後點「重新檢查並補充安排」。如果使用法定工作日規則，也請檢查並同步節假日資料。</p>
+        </details>
+        <details>
+          <summary>為什麼放假還響，或者補班沒響？</summary>
+          <p>檢查「重複」是否選了「中國法定工作日」。「每天」「週一至週五」和「自定義星期」都按固定星期響鈴，不會隨節假日和調休改變。法定工作日規則也需要已發佈並成功同步的年份資料。</p>
+        </details>
+        <details>
+          <summary>為什麼跳過的日期又恢復了？</summary>
+          <p>當前每個鬧鐘只能臨時跳過下一次響鈴。編輯並儲存會清除這個臨時跳過日期；如果仍需跳過，請儲存後重新選擇「跳過下一次」。</p>
+        </details>
+        <details>
+          <summary>能修改系統「時鐘」App 的鬧鐘嗎？</summary>
+          <p>知節鬧鐘管理的是本應用創建的鬧鐘，與系統「時鐘」App 的鬧鐘互不影響。兩個應用都設定了鬧鐘時，請分別檢查。</p>
+        </details>
+        <details>
+          <summary>在哪裡調整外觀或查看隱私政策？</summary>
+          <p>在「設定 → 外觀模式」選擇跟隨系統、亮色或暗色；設定頁使用自己的深色配色。在「設定 → 關於知節鬧鐘 → 隱私政策」查看資料處理說明。鬧鐘無需註冊帳號，資料儲存在本機。</p>
+        </details>
+      </section>
+      <section class="guide-section" aria-labelledby="support">
+        <h2 id="support">8. 反饋與幫助</h2>
+        <p>如果使用知節鬧鐘時遇到問題，或有功能建議，請發送郵件至 <a href="mailto:maque0425@163.com">maque0425@163.com</a>。</p>
+        <p>為方便定位問題，請盡量說明：</p>
+        <ul>
+          <li>應用版本、iPhone 型號和 iOS 版本。</li>
+          <li>操作步驟、預期結果，以及實際出現的情況或提示。</li>
+          <li>與問題有關的截圖；鬧鐘問題可附上重複規則、下一次響鈴時間和「查看安排」中的狀態。</li>
+        </ul>
+        <p>發送前請遮蓋截圖中的個人資訊。無需提供 Apple 帳號密碼、支付資訊或完整健康記錄。</p>
+        <p>隱私與資料處理問題也可通過上述郵箱聯繫我們。隱私政策可在應用的「設定」中查看。</p>
+      </section>
+      <section class="guide-section" aria-labelledby="regions">
+        <h2 id="regions">假日地區與語言</h2>
+        <p>在「設定 → 假日地區與日曆 → 切換地區」選擇預設工作日曆。每個工作日鬧鐘也可以在編輯時單獨選擇日曆。</p>
+        <p>新安裝首次打開會出現帶地區插畫的選擇卡片，按 iOS 地區推薦日曆，也可稍後再選。之後在“設定 → 假日地區與日曆 → 切換地區”選擇中國大陸、新加坡、中國香港、中國台灣或中國澳門，用於日曆顯示和新建鬧鐘；選擇前後均可打開“地區使用小指南”，查看適用範圍及切換影響。已有鬧鐘保留原有工作日曆，可在編輯鬧鐘時單獨選擇“工作日曆”，用於判斷工作日、假日及調休安排。簡體或繁體中文跟隨 iOS 的應用語言設定，與假日地區獨立。所支援地區均按 UTC+8 安排響鈴。</p><p>香港及澳門按週一至週五安排，跳過各地政府公布的公眾假期。澳門公共行政工作人員的補假和半天豁免，請依實際班表安排。新加坡跳過人力部公布的公眾假期及補假。台灣使用政府行政機關辦公日曆，依公布的放假及補班日期安排。中國大陸工作日按法定假日及調休補班安排。請按實際出勤日選用自訂星期、排班、臨時改點或休假暫停。</p><p>內置 2026、2027 年資料。未發佈或校驗失敗的年份不會按普通工作日自動安排，需同步最新資料或手動設定班表。語音創建可選擇普通話／國語或粵語（廣東話），香港及澳門預設優先粵語。支援“聽朝七點半”“夜晚九點三”“逢星期一至五”等常見粵語表達；粵語的“九點三”為九點十五分，明確說“三分鐘”則按三分鐘解析。“差一字”等倒數表達需改說明確時間。僅在設備支援所選語言的本機識別時錄音識別，否則可手動輸入；不上傳錄音。晨間播報自動音色在香港及澳門優先粵語，也可手動選音色。</p>
+      </section>
+    </article>
+    <footer><p>知節鬧鐘 · 使用指南 · 更新於 2026 年 11 月 17 日</p><p><a href="smart-alarm-privacy-zh-hant.html">隱私政策</a></p></footer>
+  </main>
+</body>
+</html>
