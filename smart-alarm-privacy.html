@@ -1,73 +1,88 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>知节闹钟隐私政策</title><style>
-    :root {
-      color-scheme: light dark;
-      --background: #f4f7fa;
-      --surface: #ffffff;
-      --text: #253244;
-      --muted: #5d6d7d;
-      --line: #dbe3eb;
-      --accent: #286a94;
-      --accent-soft: #e8f3f9;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --background: #111b25;
-        --surface: #1a2734;
-        --text: #e8eff5;
-        --muted: #b6c6d4;
-        --line: #344655;
-        --accent: #87c8ee;
-        --accent-soft: #203b4d;
-      }
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--background);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-      font-size: 16px;
-      line-height: 1.85;
-      -webkit-text-size-adjust: 100%;
-    }
-    a { color: var(--accent); text-underline-offset: 0.18em; }
-    a:hover { text-decoration-thickness: 2px; }
-    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
-    .skip-link { position: absolute; left: 1rem; top: -5rem; padding: 0.45rem 0.8rem; background: var(--surface); z-index: 10; }
-    .skip-link:focus { top: 0.75rem; }
-    .page { width: min(100% - 2rem, 820px); margin: 0 auto; padding: 3rem 0 4rem; }
-    .eyebrow { margin: 0 0 0.5rem; color: var(--accent); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em; }
-    h1 { margin: 0; font-size: clamp(2rem, 5vw, 2.8rem); line-height: 1.3; letter-spacing: -0.02em; }
-    .updated { margin: 1rem 0 0; color: var(--muted); font-size: 0.9rem; }
-    .intro { max-width: 46rem; margin: 1.35rem 0 2rem; color: var(--muted); }
-    .toc { padding: 1.2rem 1.5rem; margin-bottom: 1.5rem; border: 1px solid var(--line); border-radius: 16px; background: var(--accent-soft); }
-    .toc h2 { margin: 0 0 0.6rem; font-size: 1rem; }
-    .toc ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.15rem 1.5rem; margin: 0; padding-left: 1.4rem; }
-    .toc a { text-decoration: none; }
-    .toc a:hover { text-decoration: underline; }
-    .page { max-width: 880px; margin: 0 auto; padding: 24px; }
-    article { padding: 0 2rem; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; }
-    .policy-section { padding: 1.6rem 0; }
-    .policy-section + .policy-section { border-top: 1px solid var(--line); }
-    .policy-section h2 { scroll-margin-top: 1.2rem; margin: 0 0 0.85rem; font-size: 1.35rem; line-height: 1.5; }
-    .policy-section p { margin: 0.75rem 0 0; }
-    code { padding: 0.1em 0.35em; border-radius: 5px; background: var(--accent-soft); font-size: 0.9em; overflow-wrap: anywhere; }
-    @media (max-width: 600px) {
-      .page { width: min(100% - 1.5rem, 820px); padding: 2rem 0 3rem; }
-      .toc ol { grid-template-columns: 1fr; }
-      article { padding: 0 1.2rem; }
-      .policy-section { padding: 1.4rem 0; }
-      .policy-section h2 { font-size: 1.2rem; }
-    }
-    @media print {
-      :root { color-scheme: light; --background: #fff; --surface: #fff; --text: #000; --muted: #333; --line: #bbb; --accent: #000; }
-      body { font-size: 11pt; }
-      .page { width: 100%; padding: 0; }
-      .toc, .skip-link { display: none; }
-      article { padding: 0; border: 0; }
-      .policy-section { break-inside: avoid; }
-      a { color: inherit; }
-    }
-  </style></head><body><main class="page"><article><h1>知节闹钟隐私政策</h1><p><strong>更新及生效日期：2026 年 10 月 4 日</strong></p><p>知节闹钟（以下简称“本应用”）由知节闹钟开发者提供。本政策说明应用如何处理闹钟、计时器、Pro 功能及相关数据。如有疑问，可通过文末邮箱联系我们。</p><h2>1. 保存在设备上的数据</h2><p>本应用无需注册开发者账号。闹钟时间、标签、重复规则、分组、铃声、延后设置、计时器状态，以及本机收到的响铃和停止记录保存在本机。假期额度、到期日、已休记录、自动提醒关联、手动睡眠记录及已读取的健康睡眠记录也保存在本机，用于提醒和统计。我们不将这些内容上传至开发者服务器。</p><p>应用使用 AlarmKit 安排闹钟。标签和提示可能出现在锁屏、系统响铃界面或灵动岛，具体显示由 iOS 控制。记录与趋势仅使用本机收到的事件，可能不完整，不代表实际起床或睡眠情况。</p><p>从“文件”导入的铃声和确认保存的录音铃声存放在应用本地目录，不访问你未在文件选择器授权的文件。录音开始前申请麦克风权限，未保存的录音在退出录音页时清理；录音上限为 29 秒。</p><h2>2. 睡眠记录与健康读取</h2><p>你可以主动填写入睡和醒来时间，应用将其标为估算睡眠时长。你主动点击健康读取入口后，应用请求读取 Apple 健康中的睡眠数据；不向健康写入数据，不将健康数据上传至开发者或新闻、节假日服务，不用于广告或追踪。</p><p>健康读取结果可能为空，应用不会由此推断你是否授权或是否入睡。未授权时仍可手动填写。已读取的睡眠时间与来源保存在本机用于报告；你可在睡眠记录页删除这些本机副本，并在系统健康权限中管理后续读取。删除本机副本不会删除 Apple 健康中的原始记录。手动记录优先，重叠时间及不同来源不会重复累计。</p><h2>3. 语音输入</h2><p>Siri 和快捷指令由 Apple 系统处理语音，本应用接收日期、时长和可选标签来执行指令。</p><p>应用内按住说话创建闹钟请求麦克风和语音识别权限，只在设备支持中文设备端识别时使用设备端识别，不启用服务器识别回退，也不长期保存原始录音。结果生成可编辑草稿，用户确认后才创建闹钟。识别不可用或拒绝权限时可输入文字。</p><h2>4. 公开数据的联网请求</h2><p>为了更新中国法定节假日与调休安排，应用尝试从 jsDelivr 提供的 chinese-days 地址获取当前年及下一年公开数据，并缓存到本机。请求仅包含年份，不包含闹钟、睡眠或假期数据。数据来源为 chinese-days，采用 MIT 许可，应用内提供开源说明。</p><p>用户开启晨间简报后，所选的 07:30–12:00 晨间简报闹钟在被停止时，应用从 GitHub 托管的 https://raw.githubusercontent.com/Maque-Li/daily-news/main/static/60s/latest.json 获取公开新闻文字并缓存，当天后续停止操作不重复获取。内容使用系统语音朗读。系统界面停止后的播放需要应用获得前台运行机会。请求不发送闹钟标签、睡眠记录或假期额度；获取失败或北京时间当天内容尚未更新时可重试，不自动播报旧内容；缓存明确显示内容日期。</p><p>获取节假日和新闻时，设备会直接连接 jsDelivr 或 GitHub 的服务。服务提供方及其网络基础设施会接收到 IP 地址、请求时间、请求地址和完成连接所需的技术信息。根据提供方公开的隐私说明，部分请求信息可能被收集和保留，用于服务运行、安全防护、故障排查或使用分析；因此，这些联网请求不等同于完全不发生设备外的数据收集。具体处理范围和保留期限由提供方决定，我们无法控制或承诺其不保留请求日志。我们不在这些请求中主动附加用户标识、闹钟标签、录音、照片、睡眠记录、假期额度或所保存的地点，也不将这些个人内容上传到开发者服务器。</p><p>服务提供方隐私说明：<a href="https://www.jsdelivr.com/terms/privacy-policy">jsDelivr 隐私政策</a>；<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub 隐私声明</a>。</p><p>应用未接入广告或第三方统计 SDK，不使用上述请求信息进行广告追踪。断网或服务失败不会妨碍用户停止闹钟。外部来源与使用条款链接由用户主动点击后打开，适用目标网站的政策。</p><h2>5. 内购、设备备份与共享</h2><p>Pro 内购由 Apple App Store 和 StoreKit 处理。应用获取商品信息、发起购买，并根据 Apple 验证的交易提供权益；我们不收集银行卡或付款密码。恢复购买只在用户主动操作时调用 Apple 的恢复流程。相同 Apple 账户可以恢复购买权益，但应用不提供闹钟或报告数据的自动跨设备同步。</p><p>iOS 设备备份可能包含本地应用数据，是否备份和如何管理由你的 Apple 账户和设备设置控制。本应用不接入广告、第三方统计 SDK 或开发者账号服务，不出售个人数据，不使用健康、睡眠或假期数据进行广告营销。</p><h2>6. 保存期限与删除</h2><p>闹钟、分组、假期额度、手动睡眠记录及保存的录音保留至用户删除或卸载。已读取健康数据每次读取使用近 180 天范围，新结果替换本机健康读取副本；手动睡眠数据不随此过程删除。响铃、停止与延后记录和系统安排快照约保留 180 天。计时器结束后在下一次查询时清理。晨间简报缓存仅保留最近一次的内容、日期和触发状态，下次获取会替换。</p><p>你可在应用内删除闹钟、分组、假期或睡眠记录及录音。删除正在使用的录音前，应用会提示替换对应闹钟铃声，并确认系统安排。删除分组不会删除组内闹钟。Pro 权益失效不会自动删除既有数据或关闭既有闹钟。卸载可清除应用本机数据，设备备份需通过 Apple 的备份方式管理；开发者无法远程读取或删除这些内容。</p><h2>7. 你的选择与政策更新</h2><p>你可在系统设置中管理闹钟、麦克风、语音识别及健康权限，关闭后对应功能可能不可用。可单独关闭晨间简报和假期到期提醒，或停止简报朗读。未授权麦克风时仍可使用内置铃声与文件导入。</p><p>本应用不以儿童为目标提供账号、社交或广告服务。功能或数据处理发生变化时，我们会更新政策日期与内容，并按适用要求提供通知。</p><h2>8. 联系我们</h2><p>如对本政策或数据处理有疑问，请发送邮件至 <a href="mailto:maque0425@163.com">maque0425@163.com</a>。</p><h2>日出与日落及定位</h2><p>日出与日落可使用常用城市，或你主动点击“使用当前位置”后授权的一次定位。仅申请使用期间定位，不请求后台定位；拒绝权限仍可选择城市查询。经纬度、地点名称与所选时区只保存在本机用于离线计算，不发送给开发者、新闻或节假日服务，不用于追踪。你可以修改保存的地点，撤回定位权限或卸载清除本机设置；计算时间为近似值，受地形和天气等影响。定位及当地时区匹配由 Apple 系统服务提供；匹配时区需要联网，会将坐标发送至 Apple 的地理编码服务，适用 Apple 的隐私规则。成功获取当地时区后，日出与日落计算在本机完成，不沿用设备时区。</p><section><h2>假期本地通知</h2><p>假期本地通知：你可多选到期前 30、14、7 天并设置时刻。应用请求系统通知权限，将剩余天数、假期类型、到期日和安排建议交由 iOS 在本机展示，不通过开发者服务器推送。通知内容可能出现在锁屏或通知中心，你可在系统设置中关闭或隐藏预览；取消提醒、用完额度或删除额度会移除未来对应通知。</p></section></article><section><h2>相册导入响铃背景</h2><p>你主动从相册导入响铃背景时，应用通过系统照片选择器只读取你选中的图片，不请求浏览整个相册。应用处理图片方向和尺寸后将不含原始 EXIF 与位置元数据的 JPEG 副本保存在本机，用于应用内响铃背景，不上传至开发者服务器。你可长按导入的背景删除副本；相册原图不受影响。iCloud 中的照片由 Apple 系统按需下载，适用 Apple 的服务规则。</p></section></main></body></html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>知节闹钟隐私政策</title>
+  <link rel="stylesheet" href="smart-alarm-legal.css">
+</head>
+<body>
+<main class="legal-page">
+<article class="legal-document">
+<header class="legal-header">
+<h1>知节闹钟隐私政策</h1>
+<p class="meta"><strong>更新及生效日期：2026 年 11 月 17 日</strong></p>
+<p>知节闹钟（以下简称“本应用”）由知节闹钟开发者提供。本政策说明应用如何处理闹钟、计时器、Pro 功能及相关数据。如有疑问，可通过文末邮箱联系我们。</p>
+<p><a href="smart-alarm-privacy-zh-hant.html" lang="zh-Hant">繁體中文</a> · <a href="smart-alarm-privacy-en.html" lang="en-GB">English</a></p>
+</header>
+<section class="legal-section">
+<h2>1. 保存在设备上的数据</h2>
+<p>本应用无需注册开发者账号。闹钟时间、标签、重复规则、分组、铃声、延后设置、计时器状态，以及本机收到的响铃和停止记录保存在本机。假期额度、到期日、已休记录、自动提醒关联、手动睡眠记录及已读取的健康睡眠记录也保存在本机，用于提醒和统计。我们不将这些内容上传至开发者服务器。</p>
+<p>你主动使用“备份与恢复”时，应用将闹钟、分组、自定义铃声音频和休假日期打包为明文备份文件，并通过系统文件选择器保存至你指定的位置。选择 iCloud Drive 或其他文件服务时，文件由你选择的服务保存和传输。导入仅访问你选择的文件，预览后由你勾选并确认合并恢复。备份文件可能包含标签和录音等个人内容，请妥善保管；可在保存位置自行删除。</p>
+<p>裁剪导入音频时，应用仅读取你在系统文件选择器中选中的文件，在本机创建临时副本以计算波形、裁剪和处理淡入淡出。确认保存后，仅将选定片段转换为 WAV 铃声保存至铃声库或待保存的闹钟。取消、关闭裁剪页或完成后清理临时音频副本，原文件由你管理；处理过程中不向服务器上传音频。</p>
+<p>应用使用 AlarmKit 安排闹钟。标签和提示可能出现在锁屏、系统响铃界面或灵动岛，具体显示由 iOS 控制。记录与趋势仅使用本机收到的事件，可能不完整，不代表实际起床或睡眠情况。</p>
+<p>从“文件”导入的铃声和确认保存的录音铃声存放在应用本地目录，不访问你未在文件选择器授权的文件。录音开始前申请麦克风权限，未保存的录音在退出录音页时清理；录音上限为 29 秒。</p>
+</section>
+<section class="legal-section">
+<h2>2. 睡眠记录与健康读取</h2>
+<p>你可以主动填写入睡和醒来时间，应用将其标为估算睡眠时长。你主动点击健康读取入口后，应用请求读取 Apple 健康中的睡眠数据；不向健康写入数据，不将健康数据上传至开发者或天气、节假日服务，不用于广告或追踪。</p>
+<p>健康读取结果可能为空，应用不会由此推断你是否授权或是否入睡。未授权时仍可手动填写。已读取的睡眠时间与来源保存在本机用于报告；你可在睡眠记录页删除这些本机副本，并在系统健康权限中管理后续读取。删除本机副本不会删除 Apple 健康中的原始记录。手动记录优先，重叠时间及不同来源不会重复累计。</p>
+</section>
+<section class="legal-section">
+<h2>3. 语音输入</h2>
+<p>Siri 和快捷指令由 Apple 系统处理语音，本应用接收日期、时长和可选标签来执行指令。</p>
+<p>应用内按住说话创建闹钟请求麦克风和语音识别权限，只在设备支持中文设备端识别时使用设备端识别，不启用服务器识别回退，也不长期保存原始录音。结果生成可编辑草稿，用户确认后才创建闹钟。识别不可用或拒绝权限时可输入文字。</p>
+</section>
+<section class="legal-section">
+<h2>4. 公开数据的联网请求</h2>
+<p>应用按你选择的假日地区，以及已有假日闹钟所属地区，获取当前年和下一年的公开日历。中国大陆数据来自 jsDelivr 分发的 chinese-days；新加坡公众假期来自新加坡人力部 data.gov.sg；香港公众假期来自香港政府 1823；台湾政府机关办公日历来自行政院人事行政总处；澳门公众假期来自澳门特别行政区政府入口网站。数据缓存于本机，应用不自动推算个人或雇主另行约定的替代假期。请求仅涉及公开日历、地区和年份，不包含闹钟标签、录音、睡眠或假期记录。来源、许可和适用范围可在“设置 → 假日地区与日历”查看。</p>
+<p>用户开启晨间播报后，所选的 07:30–12:00 闹钟（按 UTC+8）被明确停止时，应用播报设备当前时区的公历日期、星期与农历；节气当天播报节气名称，节气计算支持 1900 至 2100 年。你可选择天气城市，或主动授权一次定位以保存天气地点；不请求后台定位，也不持续跟踪，旅行后需主动更新地点。设置天气地点并请求播报时，应用通过 Apple WeatherKit 将该地点的经纬度发送至 Apple 获取当前天气和当天预报，并使用系统语音朗读。不设置地点或天气不可用时只播日期。系统界面停止后的播放需要应用获得前台运行机会，也可主动点击“现在播报日期和天气”。本版本不再获取、展示或朗读第三方新闻，升级时清除旧新闻缓存。</p>
+<p>获取假日数据时，设备按所选地区直接连接 jsDelivr、data.gov.sg、香港政府 1823、台湾人事行政总处或澳门政府入口网站 gov.mo；获取天气和地点名称时连接 Apple 的天气与地理编码服务。服务提供方及其网络基础设施会接收到 IP 地址、请求时间、请求地址和完成连接所需的技术信息，具体处理范围与保留期限由提供方决定。天气查询另包含你选择的地点坐标；请求不主动附加闹钟标签、录音、照片、睡眠记录或假期额度。开发者不接收这些个人记录或天气地点。</p>
+<p>服务提供方隐私说明：<a href="https://www.jsdelivr.com/terms/privacy-policy">jsDelivr 隐私政策</a>；<a href="https://www.apple.com/legal/privacy/zh-cn/">Apple 隐私政策</a>。天气页面提供 Apple Weather 标识与实际数据来源法律链接。</p>
+<p>应用未接入广告或第三方统计 SDK，不使用上述请求信息进行广告追踪。断网或服务失败不会妨碍用户停止闹钟。外部来源与使用条款链接由用户主动点击后打开，适用目标网站的政策。</p>
+</section>
+<section class="legal-section">
+<h2>5. 内购、设备备份与共享</h2>
+<p>Pro 内购由 Apple App Store 和 StoreKit 处理。应用获取商品信息、发起购买，并根据 Apple 验证的交易提供权益；我们不收集银行卡或付款密码。恢复购买只在用户主动操作时调用 Apple 的恢复流程。相同 Apple 账户可以恢复购买权益，但应用不提供闹钟或报告数据的自动跨设备同步。</p>
+<p>iOS 设备备份可能包含本地应用数据，是否备份和如何管理由你的 Apple 账户和设备设置控制。本应用不接入广告、第三方统计 SDK 或开发者账号服务，不出售个人数据，不使用健康、睡眠或假期数据进行广告营销。</p>
+</section>
+<section class="legal-section">
+<h2>6. 保存期限与删除</h2>
+<p>闹钟、分组、假期额度、手动睡眠记录及保存的录音保留至用户删除或卸载。已读取健康数据每次读取使用近 180 天范围，新结果替换本机健康读取副本；手动睡眠数据不随此过程删除。响铃、停止与延后记录和系统安排快照约保留 180 天。计时器结束后在下一次查询时清理。晨间播报仅在内存保留本次日期与天气，结束应用后不保留天气内容；所选天气地点及每日触发状态保存在本机，可在播报页选择“未设置 · 只播日期”清除天气地点。旧新闻缓存会在升级后首次初始化播报服务时删除。</p>
+<p>你可在应用内删除闹钟、分组、假期或睡眠记录及录音。删除正在使用的录音前，应用会提示替换对应闹钟铃声，并确认系统安排。删除分组不会删除组内闹钟。Pro 权益失效不会自动删除既有数据或关闭既有闹钟。卸载可清除应用本机数据，设备备份需通过 Apple 的备份方式管理；开发者无法远程读取或删除这些内容。</p>
+</section>
+<section class="legal-section">
+<h2>7. 你的选择与政策更新</h2>
+<p>你可在系统设置中管理闹钟、相机、麦克风、语音识别及健康权限，关闭后对应功能可能不可用。可单独关闭晨间播报和假期到期提醒，或停止晨间朗读。未授权麦克风时仍可使用内置铃声与文件导入。</p>
+<p>本应用不以儿童为目标提供账号、社交或广告服务。功能或数据处理发生变化时，我们会更新政策日期与内容，并按适用要求提供通知。</p>
+</section>
+<section class="legal-section">
+<h2>8. 联系我们</h2>
+<p>如对本政策或数据处理有疑问，请发送邮件至 <a href="mailto:maque0425@163.com">maque0425@163.com</a>。</p>
+</section>
+<section class="legal-section">
+<h2>日出与日落及定位</h2>
+<p>日出与日落可使用常用城市，或你主动点击“使用当前位置”后授权的一次定位。仅申请使用期间定位，不请求后台定位；拒绝权限仍可选择城市查询。经纬度、地点名称与所选时区只保存在本机用于离线计算，不发送给开发者或节假日服务，不用于追踪。你可以修改保存的地点，撤回定位权限或卸载清除本机设置；计算时间为近似值，受地形和天气等影响。定位及当地时区匹配由 Apple 系统服务提供；匹配时区需要联网，会将坐标发送至 Apple 的地理编码服务，适用 Apple 的隐私规则。成功获取当地时区后，日出与日落计算在本机完成，不沿用设备时区。</p>
+</section>
+<section class="legal-section">
+<h2>假期本地通知</h2>
+<p>假期本地通知：你可多选到期前 30、14、7 天并设置时刻。应用请求系统通知权限，将剩余天数、假期类型、到期日和安排建议交由 iOS 在本机展示，不通过开发者服务器推送。通知内容可能出现在锁屏或通知中心，你可在系统设置中关闭或隐藏预览；取消提醒、用完额度或删除额度会移除未来对应通知。</p>
+</section>
+<section class="legal-section">
+<h2>免费体验与报告快照</h2>
+<p>3 天免费体验通过 Apple App Store 的免费非消耗型商品领取，不创建自动续费订阅。Apple 保存与 Apple 账户关联的领取交易，应用读取并验证商品标识、原始交易标识与首次领取时间，按该时间判断体验期限；同一 Apple 账户重新安装或更换设备后不会重新开始体验。本机钥匙串和应用设置仅缓存对应交易的体验时间、到期状态与提醒状态；单独的本机记录不能解锁体验。应用不读取 Apple 账户密码，不将领取记录上传至开发者服务器。</p>
+<p>查看 Pro 周报或月报时保存报告快照，包含该报告及对比所需的响铃、睡眠和安排数据，只保存在本机。已保存报告不随体验到期或原始历史的 180 天清理自动删除，可在报告页单独删除。删除睡眠记录或清除健康副本时，也会移除已保存报告中的对应睡眠数据，因此报告统计可能改变。</p>
+</section>
+<section class="legal-section">
+<h2>照片响铃背景</h2>
+<p>你主动选择照片作为响铃背景时，应用通过系统照片选择器只读取你选中的图片，不请求浏览整个相册。你也可主动选择拍照，应用会先申请相机权限；拒绝授权仍可从相册选择或使用内置背景。拍摄的照片不会自动写入系统相册。应用处理图片方向和尺寸后将不含原始 EXIF 与位置元数据的 JPEG 副本保存在本机，用于应用内响铃背景，不上传至开发者服务器。你可长按导入的背景删除副本；相册原图不受影响。iCloud 中的照片由 Apple 系统按需下载，适用 Apple 的服务规则。</p>
+</section>
+<section class="legal-section">
+<h2>桌面小组件背景</h2>
+<p>你为桌面小组件选择照片背景时，可通过系统照片选择器仅读取所选图片，也可主动授权相机拍照。拒绝相机授权仍可从相册选择或使用内置背景，拍摄的照片不会自动写入系统相册。应用将规范方向、缩小尺寸且移除原始 EXIF/GPS 元数据的 JPEG 副本保存在应用与小组件的本机共享目录，不上传。小号和中号分别保存背景设置。更换图片、移除图片或恢复默认并保存后，会清理对应旧副本，相册原图不受影响。iCloud 中的照片由 Apple 系统按需下载。小组件仅共享必要的闹钟显示快照、法定日历和背景设置，不共享健康睡眠记录或录音。</p>
+</section>
+<footer class="legal-section"><p><a href="smart-alarm-guide.html">使用指南</a></p></footer>
+</article>
+</main>
+</body>
+</html>
